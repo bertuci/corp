@@ -6,6 +6,7 @@ import glob
 import zipfile
 import numpy as np
 from prophet import Prophet
+from prophet.plot import plot_plotly, plot_components_plotly
 
 
 def zipar_arquivos_por_extensao(extensao, nome_zip):
