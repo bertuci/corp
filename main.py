@@ -7,7 +7,13 @@ import zipfile
 import numpy as np
 from prophet import Prophet
 from prophet.plot import plot_plotly, plot_components_plotly
-import plotly
+from prophet.plot import add_changepoints_to_plot
+import warnings
+from prophet import Prophet
+from prophet.plot import plot_plotly, plot_components_plotly
+from prophet.diagnostics import cross_validation
+from prophet.diagnostics import performance_metrics
+from prophet.plot import plot_cross_validation_metric
 
 
 def zipar_arquivos_por_extensao(extensao, nome_zip):
