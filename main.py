@@ -6,14 +6,6 @@ import glob
 import zipfile
 import numpy as np
 from prophet import Prophet
-from prophet.plot import plot_plotly, plot_components_plotly
-from prophet.plot import add_changepoints_to_plot
-import warnings
-from prophet import Prophet
-from prophet.plot import plot_plotly, plot_components_plotly
-from prophet.diagnostics import cross_validation
-from prophet.diagnostics import performance_metrics
-from prophet.plot import plot_cross_validation_metric
 
 
 def zipar_arquivos_por_extensao(extensao, nome_zip):
@@ -265,14 +257,14 @@ def section3():
         x_column = st.selectbox("Selecione a coluna para o eixo X", df.columns)
         y_column = st.selectbox("Selecione a coluna para o eixo Y", df.columns)
 
-        grafico1 = plot_plotly(x_column, y_column)
-        st.plotly_chart(grafico1)
+   
 
-        # grafico2
-        grafico2 = plot_components_plotly(x_column, y_column)
-        st.plotly_chart(grafico2)
-
-
+        plt.figure(figsize=(12, 6))
+        plt.plot(df[x_column], df[y_column])
+        plt.xlabel(x_column)
+        plt.ylabel(y_column)
+        plt.title("Gráfico de Linhas")
+        st.pyplot(plt)
 
         deletar_arquivos_por_extensao('csv')
 
