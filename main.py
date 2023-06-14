@@ -138,7 +138,7 @@ def section2():
 
         if st.button("Executar Modelo"): 
             arq_csv = str(nome_arquivo).lower()          
-            raw = pd.read_csv(arq_csv, sep=separator2)
+            raw =df
             raw_aux = raw.copy()
 
             # Obs.: Como os dados estÃ£o em um perÃ­odo bimestral e o modelo Prophet espera o formato mensal, para o campo MES foi repetido o registro do respectivo bimestre, exemploo: Mes 1 e Mes 2 possuem os mesmo valores anteriormente representando pelo 1 bimestre
