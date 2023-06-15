@@ -116,8 +116,7 @@ def section2():
         st.write(df)
 
         if st.button("Executar Modelo"): 
-            arq_csv = str(nome_arquivo).lower()          
-            raw = pd.read_csv(arq_csv, sep=separator2)
+            raw = df
             raw_aux = raw.copy()
 
             # Obs.: Como os dados estÃ£o em um perÃ­odo bimestral e o modelo Prophet espera o formato mensal, para o campo MES foi repetido o registro do respectivo bimestre, exemploo: Mes 1 e Mes 2 possuem os mesmo valores anteriormente representando pelo 1 bimestre
@@ -167,7 +166,7 @@ def section2():
 
             df_export_valor =  m_aurora_valor.predict(future_aurora_valor)
             df_export_valor = df_export_valor[['ds', 'yhat_lower','yhat_upper', 'yhat']]
-            df_export_valor.to_csv('predict_valor_'+ arq_csv, sep=',', index=None, header=True)
+            df_export_valor.to_csv('predict_valor_'+ nome_arquivo, sep=',', index=None, header=True)
 
             # Target Volume
             dataset_aurora_volume = dataset_aurora_volume.rename(columns={'data_completa':'ds','media_mensal_bim_vendas_volume':'y'})
@@ -181,7 +180,7 @@ def section2():
 
             df_export_volume =  m_aurora_volume.predict(future_aurora_volume)
             df_export_volume = df_export_volume[['ds', 'yhat_lower','yhat_upper', 'yhat']]
-            df_export_volume.to_csv('predict_volume_'+ arq_csv, sep=',', index=None, header=True)
+            df_export_volume.to_csv('predict_volume_'+ nome_arquivo, sep=',', index=None, header=True)
 
             st.success("Modelo treinado com sucesso!")
             
